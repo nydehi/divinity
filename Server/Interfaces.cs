@@ -47,17 +47,6 @@ namespace Server
 		void Restock();
 	}
 
-	public interface IPoint2D
-	{
-		int X{ get; }
-		int Y{ get; }
-	}
-
-	public interface IPoint3D : IPoint2D
-	{
-		int Z{ get; }
-	}
-
 	public interface ICarvable
 	{
 		void Carve( Mobile from, Item item );

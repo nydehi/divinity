@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="AggressorInfo.cs" />
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="Attributes.cs" />
     <Compile Include="BaseVendor.cs" />
     <Compile Include="Body.cs" />
     <Compile Include="ClientVersion.cs" />
@@ -58,16 +57,13 @@
     <Compile Include="ContextMenus\ContextMenuEntry.cs" />
     <Compile Include="ContextMenus\OpenBackpackEntry.cs" />
     <Compile Include="ContextMenus\PaperdollEntry.cs" />
-    <Compile Include="Diagnostics\BaseProfile.cs" />
     <Compile Include="Diagnostics\GumpProfile.cs" />
     <Compile Include="Diagnostics\PacketProfile.cs" />
     <Compile Include="Diagnostics\TargetProfile.cs" />
-    <Compile Include="Diagnostics\TimerProfile.cs" />
     <Compile Include="Effects.cs" />
     <Compile Include="EventLog.cs" />
     <Compile Include="EventSink.cs" />
     <Compile Include="ExpansionInfo.cs" />
-    <Compile Include="Geometry.cs" />
     <Compile Include="Guild.cs" />
     <Compile Include="Gumps\Gump.cs" />
     <Compile Include="Gumps\GumpAlphaRegion.cs" />
@@ -93,7 +89,6 @@
     <Compile Include="HuePicker.cs" />
     <Compile Include="IAccount.cs" />
     <Compile Include="IEntity.cs" />
-    <Compile Include="Insensitive.cs" />
     <Compile Include="Interfaces.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemBounds.cs" />
@@ -139,16 +134,13 @@
     <Compile Include="Persistence\SaveStrategy.cs" />
     <Compile Include="Persistence\SequentialFileWriter.cs" />
     <Compile Include="Persistence\StandardSaveStrategy.cs" />
-    <Compile Include="Point3DList.cs" />
     <Compile Include="Poison.cs" />
     <Compile Include="Prompt.cs" />
     <Compile Include="QuestArrow.cs" />
     <Compile Include="Race.cs" />
     <Compile Include="Region.cs" />
     <Compile Include="ScriptCompiler.cs" />
-    <Compile Include="Sector.cs" />
     <Compile Include="SecureTrade.cs" />
-    <Compile Include="Serial.cs" />
     <Compile Include="Serialization.cs" />
     <Compile Include="Skills.cs" />
     <Compile Include="Targeting\LandTarget.cs" />
@@ -161,7 +153,6 @@
     <Compile Include="TileList.cs" />
     <Compile Include="TileMatrix.cs" />
     <Compile Include="TileMatrixPatch.cs" />
-    <Compile Include="Timer.cs" />
     <Compile Include="Ultima\Animations.cs" />
     <Compile Include="Ultima\Art.cs" />
     <Compile Include="Ultima\CalibrationInfo.cs" />
@@ -191,6 +182,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Server.Core\Server.Core.csproj">
+      <Project>{baf32c28-5d8d-4fa2-9a6c-dcc3eb1e32f8}</Project>
+      <Name>Server.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Server.Diagnostics\Server.Diagnostics.csproj">
+      <Project>{69c6822a-3905-4318-8cb7-9d5ced5a25e1}</Project>
+      <Name>Server.Diagnostics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Server.IOC\Server.IOC.csproj">
+      <Project>{e847b7b4-d9ec-4d79-8d8a-363c4a607f7f}</Project>
+      <Name>Server.IOC</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

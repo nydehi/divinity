@@ -687,7 +687,7 @@ namespace Server
 
 		public static void EnsureDirectory( string dir )
 		{
-			string path = Path.Combine( Core.BaseDirectory, dir );
+		    string path =Path.Combine( Core.BaseDirectory, dir );
 
 			if( !Directory.Exists( path ) )
 				Directory.CreateDirectory( path );
@@ -696,8 +696,8 @@ namespace Server
 		public static string[] GetScripts( string filter )
 		{
 			List<string> list = new List<string>();
-
-			GetScripts( list, Path.Combine( Core.BaseDirectory, "Scripts" ), filter );
+ //@"C:\dev\uo_DIV\divinity\"
+			  GetScripts( list, Path.Combine(Core.BaseDirectory , "Scripts" ), filter );
 
 			return list.ToArray();
 		}
