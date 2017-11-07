@@ -41,9 +41,11 @@
   <ItemGroup>
     <Compile Include="Attributes.cs" />
     <Compile Include="ClientVersion.cs" />
+    <Compile Include="EncodedPacketHandler.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Geometry.cs" />
     <Compile Include="Insensitive.cs" />
+    <Compile Include="NativeReader.cs" />
     <Compile Include="Point3DList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sector.cs" />

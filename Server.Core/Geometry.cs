@@ -40,6 +40,29 @@ namespace Server
 		internal int m_X;
 		internal int m_Y;
 
+        public int mY
+        {
+            get
+            {
+                return m_Y;
+            }
+            set
+            {
+                m_Y = value;
+            }
+        }
+
+        public int mX
+        {
+            get
+            {
+                return m_X;
+            }
+            set
+            {
+                m_X = value;
+            }
+        }
 		public static readonly Point2D Zero = new Point2D( 0, 0 );
 
 		public Point2D( int x, int y )
