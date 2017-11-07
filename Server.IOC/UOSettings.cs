@@ -9,7 +9,7 @@ namespace Server.IOC
     public interface IUOSettings
     {
         bool Profiling { get; set; }
-        string FindDataFile( string path )
+        string FindDataFile(string path);
     }
     public class UOSettings : IUOSettings
     {

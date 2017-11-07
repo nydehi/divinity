@@ -57,9 +57,6 @@
     <Compile Include="ContextMenus\ContextMenuEntry.cs" />
     <Compile Include="ContextMenus\OpenBackpackEntry.cs" />
     <Compile Include="ContextMenus\PaperdollEntry.cs" />
-    <Compile Include="Diagnostics\GumpProfile.cs" />
-    <Compile Include="Diagnostics\PacketProfile.cs" />
-    <Compile Include="Diagnostics\TargetProfile.cs" />
     <Compile Include="Effects.cs" />
     <Compile Include="EventLog.cs" />
     <Compile Include="EventSink.cs" />

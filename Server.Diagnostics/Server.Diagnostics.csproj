@@ -40,8 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseProfile.cs" />
+    <Compile Include="GumpProfile.cs" />
     <Compile Include="ILog.cs" />
+    <Compile Include="PacketProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TargetProfile.cs" />
     <Compile Include="TimerProfile.cs" />
   </ItemGroup>
   <ItemGroup>
