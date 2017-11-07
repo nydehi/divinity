@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server.IOC", "Server.IOC\Se
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server.Network", "Server.Network\Server.Network.csproj", "{A8B470BD-E6D1-45B0-86BE-6FA7CDF1CD02}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server.UO.Base", "Server.UO.Base\Server.UO.Base.csproj", "{D72428BF-402F-4B88-9442-165B18D3A8D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{A8B470BD-E6D1-45B0-86BE-6FA7CDF1CD02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8B470BD-E6D1-45B0-86BE-6FA7CDF1CD02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8B470BD-E6D1-45B0-86BE-6FA7CDF1CD02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D72428BF-402F-4B88-9442-165B18D3A8D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D72428BF-402F-4B88-9442-165B18D3A8D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D72428BF-402F-4B88-9442-165B18D3A8D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D72428BF-402F-4B88-9442-165B18D3A8D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

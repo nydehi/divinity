@@ -17,7 +17,7 @@ namespace Server
     public interface IMobile
     {
         int CompareTo( IEntity other );
-        int CompareTo( Mobile other );
+        int CompareTo( IMobile other );
         int CompareTo( object other );
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -48,7 +48,7 @@ namespace Server
 
         List<ResistanceMod> ResistanceMods { get; set; }
         bool NewGuildDisplay { get; }
-        List<Mobile> Stabled { get; set; }
+        List<IMobile> Stabled { get; set; }
 
         [CommandProperty(AccessLevel.Counselor, AccessLevel.GameMaster)]
         VirtueInfo Virtues { get; set; }

@@ -50,7 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AggressorInfo.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="BaseVendor.cs" />
     <Compile Include="Body.cs" />
@@ -86,17 +85,12 @@
     <Compile Include="Gumps\RelayInfo.cs" />
     <Compile Include="HuePicker.cs" />
     <Compile Include="IAccount.cs" />
-    <Compile Include="IEntity.cs" />
-    <Compile Include="IMobile.cs" />
-    <Compile Include="Interfaces.cs" />
-    <Compile Include="Item.cs" />
     <Compile Include="ItemBounds.cs" />
     <Compile Include="Items\BaseMulti.cs" />
     <Compile Include="Items\Container.cs" />
     <Compile Include="Items\Containers.cs" />
     <Compile Include="Items\SecureTradeContainer.cs" />
     <Compile Include="Items\VirtualHair.cs" />
-    <Compile Include="KeywordList.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Menus\IMenu.cs" />
@@ -107,7 +101,6 @@
     <Compile Include="MultiData.cs" />
     <Compile Include="Notoriety.cs" />
     <Compile Include="ObjectPropertyList.cs" />
-    <Compile Include="Party.cs" />
     <Compile Include="Persistence\BinaryMemoryWriter.cs" />
     <Compile Include="Persistence\DualSaveStrategy.cs" />
     <Compile Include="Persistence\FileOperations.cs" />
@@ -120,12 +113,9 @@
     <Compile Include="Poison.cs" />
     <Compile Include="Prompt.cs" />
     <Compile Include="QuestArrow.cs" />
-    <Compile Include="Race.cs" />
-    <Compile Include="Region.cs" />
     <Compile Include="ScriptCompiler.cs" />
     <Compile Include="SecureTrade.cs" />
     <Compile Include="Serialization.cs" />
-    <Compile Include="Skills.cs" />
     <Compile Include="Targeting\LandTarget.cs" />
     <Compile Include="Targeting\MultiTarget.cs" />
     <Compile Include="Targeting\StaticTarget.cs" />
@@ -182,6 +172,10 @@
     <ProjectReference Include="..\Server.Network\Server.Network.csproj">
       <Project>{a8b470bd-e6d1-45b0-86be-6fa7cdf1cd02}</Project>
       <Name>Server.Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Server.UO.Base\Server.UO.Base.csproj">
+      <Project>{d72428bf-402f-4b88-9442-165b18d3a8d8}</Project>
+      <Name>Server.UO.Base</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
