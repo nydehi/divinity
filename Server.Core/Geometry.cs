@@ -279,7 +279,17 @@ namespace Server
 			: this( p.X, p.Y, z )
 		{
 		}
-
+        public int mX
+        {
+            get
+            {
+                return m_X;
+            }
+            set
+            {
+                m_X = value;
+            }
+        }
 		[CommandProperty( AccessLevel.Counselor )]
 		public int X
 		{
@@ -305,7 +315,17 @@ namespace Server
 				m_Y = value;
 			}
 		}
-
+        public int mY
+        {
+            get
+            {
+                return m_Y;
+            }
+            set
+            {
+                m_Y = value;
+            }
+        }
 		[CommandProperty( AccessLevel.Counselor )]
 		public int Z
 		{
@@ -318,6 +338,17 @@ namespace Server
 				m_Z = value;
 			}
 		}
+        public int mZ
+        {
+            get
+            {
+                return m_Z;
+            }
+            set
+            {
+                m_Z = value;
+            }
+        }
 
 		public override string ToString()
 		{

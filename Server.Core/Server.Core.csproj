@@ -50,10 +50,12 @@
     <Compile Include="NativeReader.cs" />
     <Compile Include="Point3DList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Region.cs" />
     <Compile Include="Sector.cs" />
     <Compile Include="Serial.cs" />
     <Compile Include="Timer.cs" />
     <Compile Include="Utility.cs" />
+    <Compile Include="VirtueInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Server.IOC\Server.IOC.csproj">

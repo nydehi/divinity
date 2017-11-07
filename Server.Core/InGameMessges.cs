@@ -8,7 +8,7 @@ namespace Server.Core
 {
     public enum InGameMessages
     {
-        ThatskillCannotBeUsedDirectly = 500014;
+        ThatskillCannotBeUsedDirectly = 500014 
 
     }
 }

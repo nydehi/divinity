@@ -27,7 +27,7 @@ namespace Server
 {
 	public class AggressorInfo
 	{
-		private Mobile m_Attacker, m_Defender;
+		private IMobile m_Attacker, m_Defender;
 		private DateTime m_LastCombatTime;
 		private bool m_CanReportMurder;
 		private bool m_Reported;
@@ -37,7 +37,7 @@ namespace Server
 
 		private static Queue<AggressorInfo> m_Pool = new Queue<AggressorInfo>();
 
-		public static AggressorInfo Create( Mobile attacker, Mobile defender, bool criminal )
+		public static AggressorInfo Create( IMobile attacker, IMobile defender, bool criminal )
 		{
 			AggressorInfo info;
 
@@ -72,7 +72,7 @@ namespace Server
 			m_Pool.Enqueue( this );
 		}
 
-		private AggressorInfo( Mobile attacker, Mobile defender, bool criminal )
+		private AggressorInfo( IMobile attacker, IMobile defender, bool criminal )
 		{
 			m_Attacker = attacker;
 			m_Defender = defender;
@@ -131,7 +131,7 @@ namespace Server
 			}
 		}
 
-		public Mobile Attacker
+		public IMobile Attacker
 		{
 			get
 			{
@@ -142,7 +142,7 @@ namespace Server
 			}
 		}
 
-		public Mobile Defender
+		public IMobile Defender
 		{
 			get
 			{

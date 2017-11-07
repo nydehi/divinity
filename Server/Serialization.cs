@@ -505,15 +505,15 @@ namespace Server
 
 		public override void Write( Point3D value )
 		{
-			Write( value.m_X );
-			Write( value.m_Y );
-			Write( value.m_Z );
+			Write( value.mX );
+			Write( value.mY );
+			Write( value.mZ );
 		}
 
 		public override void Write( Point2D value )
 		{
-			Write( value.m_X );
-			Write( value.m_Y );
+			Write( value.mX );
+			Write( value.mY );
 		}
 
 		public override void Write( Rectangle2D value )
@@ -544,7 +544,7 @@ namespace Server
 				Write( value.Serial );
 		}
 
-		public override void Write( Mobile value )
+		public override void Write( IMobile value )
 		{
 			if( value == null || value.Deleted )
 				Write( Serial.MinusOne );
@@ -1414,15 +1414,15 @@ namespace Server
 
 		public override void Write( Point3D value )
 		{
-			Write( value.m_X );
-			Write( value.m_Y );
-			Write( value.m_Z );
+			Write( value.mX );
+			Write( value.mY );
+			Write( value.mZ );
 		}
 
 		public override void Write( Point2D value )
 		{
-			Write( value.m_X );
-			Write( value.m_Y );
+			Write( value.mX );
+			Write( value.mY );
 		}
 
 		public override void Write( Rectangle2D value )

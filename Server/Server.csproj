@@ -147,7 +147,6 @@
     <Compile Include="Ultima\Verdata.cs" />
     <Compile Include="Ultima\WindowProcessStream.cs" />
     <Compile Include="Utility.cs" />
-    <Compile Include="VirtueInfo.cs" />
     <Compile Include="World.cs" />
   </ItemGroup>
   <ItemGroup>

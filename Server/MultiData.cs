@@ -213,24 +213,24 @@ namespace Server
 
 				m_List = newList;
 
-				if ( x < m_Min.m_X )
-					m_Min.m_X = x;
+				if ( x < m_Min.mX )
+					m_Min.mX = x;
 
-				if ( y < m_Min.m_Y )
-					m_Min.m_Y = y;
+				if ( y < m_Min.mY )
+					m_Min.mY = y;
 
-				if ( x > m_Max.m_X )
-					m_Max.m_X = x;
+				if ( x > m_Max.mX )
+					m_Max.mX = x;
 
-				if ( y > m_Max.m_Y )
-					m_Max.m_Y = y;
+				if ( y > m_Max.mY )
+					m_Max.mY = y;
 			}
 		}
 
 		public void RemoveXYZH( int x, int y, int z, int minHeight )
 		{
-			int vx = x + m_Center.m_X;
-			int vy = y + m_Center.m_Y;
+			int vx = x + m_Center.mX;
+			int vy = y + m_Center.mY;
 
 			if ( vx >= 0 && vx < m_Width && vy >= 0 && vy < m_Height )
 			{

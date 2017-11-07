@@ -68,7 +68,7 @@ namespace Server.Guilds
 		public abstract string Name { get; set; }
 		public abstract GuildType Type { get; set; }
 		public abstract bool Disbanded{ get; }
-		public abstract void OnDelete( Mobile mob );
+		public abstract void OnDelete(IMobile mob );
 
 		private static Dictionary<int, BaseGuild> m_GuildList = new Dictionary<int, BaseGuild>();
 		private static int m_NextID = 1;

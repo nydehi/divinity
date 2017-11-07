@@ -745,16 +745,16 @@ namespace Server
         IPooledEnumerable GetMobilesInRange( int range );
         IPooledEnumerable GetClientsInRange( int range );
         void DoSpeech( string text, int[] keywords, MessageType type, int hue );
-        Mobile FindMostRecentDamager( bool allowSelf );
+        IMobile FindMostRecentDamager( bool allowSelf );
         DamageEntry FindMostRecentDamageEntry( bool allowSelf );
-        Mobile FindLeastRecentDamager( bool allowSelf );
+        IMobile FindLeastRecentDamager( bool allowSelf );
         DamageEntry FindLeastRecentDamageEntry( bool allowSelf );
-        Mobile FindMostTotalDamger( bool allowSelf );
+        IMobile FindMostTotalDamger( bool allowSelf );
         DamageEntry FindMostTotalDamageEntry( bool allowSelf );
-        Mobile FindLeastTotalDamger( bool allowSelf );
+        IMobile FindLeastTotalDamger( bool allowSelf );
         DamageEntry FindLeastTotalDamageEntry( bool allowSelf );
         DamageEntry FindDamageEntryFor( Mobile m );
-        Mobile GetDamageMaster( Mobile damagee );
+        IMobile GetDamageMaster( Mobile damagee );
         DamageEntry RegisterDamage( int amount, Mobile from );
 
         /// <summary>
