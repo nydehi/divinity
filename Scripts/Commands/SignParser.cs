@@ -38,7 +38,7 @@ namespace Server.Commands
 
 		public static void Parse( Mobile from )
 		{
-			string cfg = Path.Combine( Core.BaseDirectory, "Data/signs.cfg" );
+			string cfg = Core.GetPathOfFileName(Core.c_ConfigFilePath, "signs.cfg" );
 
 			if ( File.Exists( cfg ) )
 			{

@@ -165,7 +165,7 @@ namespace Server
 		{
 			m_Blocked = new List<IFirewallEntry>();
 
-			string path = "firewall.cfg";
+			string path = (Core.GetPathOfFileName(Core.c_ConfigFilePath,"firewall.cfg"));
 
 			if ( File.Exists( path ) )
 			{
@@ -302,7 +302,7 @@ namespace Server
 
 		public static void Save()
 		{
-			string path = "firewall.cfg";
+			string path = (Core.GetPathOfFileName(Core.c_ConfigFilePath, "firewall.cfg"));
 
 			using ( StreamWriter op = new StreamWriter( path ) )
 			{

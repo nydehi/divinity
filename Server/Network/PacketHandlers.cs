@@ -2325,6 +2325,7 @@ namespace Server.Network
 
         public static void LoginServerSeed( NetState state, PacketReader pvSrc )
         {
+			Console.WriteLine("PacketHandlers - LoginServerSeed");
             state.m_Seed = pvSrc.ReadInt32();
             state.Seeded = true;
 
@@ -2341,12 +2342,16 @@ namespace Server.Network
             int clientPat = pvSrc.ReadInt32();
 
             state.Version = new ClientVersion( clientMaj, clientMin, clientRev, clientPat );
-        }
+			Console.WriteLine("PacketHandlers -end  LoginServerSeed");
+		}
 
 		public static void AccountLogin( NetState state, PacketReader pvSrc )
 		{
+			Console.WriteLine("1PacketHandlers - AccountLogin");
+			Console.WriteLine(String.Format("2PacketHandlers - {0} AccountLogin",state.ToString()));
 			if ( state.SentFirstPacket )
 			{
+				Console.WriteLine("3PacketHandlers - SentFirst Packet AccountLogin");
 				state.Dispose();
 				return;
 			}
@@ -2355,15 +2360,16 @@ namespace Server.Network
 
 			string username = pvSrc.ReadString( 30 );
 			string password = pvSrc.ReadString( 30 );
-
+			Console.WriteLine(String.Format("4PacketHandler - {0} {1} AccountLogin",username,password));
 			AccountLoginEventArgs e = new AccountLoginEventArgs( state, username, password );
 
 			EventSink.InvokeAccountLogin( e );
-
+			Console.WriteLine(String.Format("5PacketHandler - {0}  AccountLogin", e.Accepted));
 			if ( e.Accepted )
 				AccountLogin_ReplyAck( state );
 			else
 				AccountLogin_ReplyRej( state, e.RejectReason );
+			Console.WriteLine("PacketHandler - end AccountLogin");
 		}
 
 		public static void AccountLogin_ReplyAck( NetState state )

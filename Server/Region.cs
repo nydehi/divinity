@@ -869,7 +869,7 @@ namespace Server
 
 		internal static void Load()
 		{
-			if ( !System.IO.File.Exists( "Data/Regions.xml" ) )
+			if ( !System.IO.File.Exists(Core.GetPathOfFileName(Core.c_ConfigFilePath, "Regions.xml")) )
 			{
 				Console.WriteLine( "Error: Data/Regions.xml does not exist" );
 				return;
@@ -878,7 +878,7 @@ namespace Server
 			Console.Write( "Regions: Loading..." );
 
 			XmlDocument doc = new XmlDocument();
-			doc.Load( System.IO.Path.Combine( Core.BaseDirectory, "Data/Regions.xml" ) );
+			doc.Load(Core.GetPathOfFileName( Core.c_ConfigFilePath, "Regions.xml" ) );
 
 			XmlElement root = doc["ServerRegions"];
 

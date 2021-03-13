@@ -14,7 +14,8 @@ namespace Server.Misc
 
 		private static void EventSink_Login( LoginEventArgs args )
 		{
-			int userCount = Server.Admin.AdminNetwork.GetNumOnline();
+            Console.WriteLine("LoginStats - EventSink_Login");
+            int userCount = Server.Admin.AdminNetwork.GetNumOnline();
 			int itemCount = World.Items.Count;
 			int mobileCount = World.Mobiles.Count;
 
@@ -38,7 +39,8 @@ namespace Server.Misc
                     itemCount, itemCount == 1 ? "" : "s",
                     mobileCount, mobileCount == 1 ? "" : "s");
             }
-		}
+            Console.WriteLine("LoginStats - end EventSink_Login");
+        }       
 	}
 
     public class ChestOpening : Gump

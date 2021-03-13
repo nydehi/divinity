@@ -501,6 +501,7 @@ namespace Server.Mobiles
 
 		private static void OnLogin( LoginEventArgs e )
 		{
+			Console.WriteLine("PlayerMobile - OnLogin");
 			Mobile from = e.Mobile;
 
 			CheckAtrophies( from );
@@ -573,6 +574,7 @@ namespace Server.Mobiles
                     }
                 }
             }
+			Console.WriteLine("PlayerMobile - end OnLogin");
 		}
 
 		private bool m_NoDeltaRecursion;
@@ -834,6 +836,7 @@ namespace Server.Mobiles
 
 		private static void EventSink_Connected( ConnectedEventArgs e )
 		{
+			Console.WriteLine("Player Mobile - EventSink_Connected");
 			PlayerMobile pm = e.Mobile as PlayerMobile;
 
 			if ( pm != null )
@@ -848,6 +851,7 @@ namespace Server.Mobiles
 			}
 
 			Timer.DelayCall( TimeSpan.Zero, new TimerStateCallback( ClearSpecialMovesCallback ), e.Mobile );
+			Console.WriteLine("Player Mobile - end EventSink_Connected");
 		}
 
 		private static void ClearSpecialMovesCallback( object state )

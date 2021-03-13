@@ -3312,7 +3312,7 @@ public static void _TraceEnd(int index)
 		public static void LoadSettings(AssignSettingsHandler settingshandler, string section)
 		{
 			// Check if the file exists
-			string path = Path.Combine(Core.BaseDirectory, "Data/xmlspawner.cfg");
+			string path = Core.GetPathOfFileName(Core.c_ConfigFilePath, "xmlspawner.cfg");
 
 			if (!File.Exists(path))
 			{

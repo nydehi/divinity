@@ -486,6 +486,7 @@ namespace Server.Accounting
 
 		private static void EventSink_Connected( ConnectedEventArgs e )
 		{
+			Console.WriteLine("Account - EventSink_Connected");
 			Account acc = e.Mobile.Account as Account;
 
 			if ( acc == null )
@@ -496,6 +497,7 @@ namespace Server.Accounting
 				acc.m_YoungTimer = new YoungTimer( acc );
 				acc.m_YoungTimer.Start();
 			}
+			Console.WriteLine("Account - end EventSink_Connected");
 		}
 
 		private static void EventSink_Disconnected( DisconnectedEventArgs e )
@@ -520,6 +522,8 @@ namespace Server.Accounting
 
 		private static void EventSink_Login( LoginEventArgs e )
 		{
+			Console.WriteLine("Account -  EventSink_Login");
+
 			PlayerMobile m = e.Mobile as PlayerMobile;
 
 			if ( m == null )
@@ -537,6 +541,7 @@ namespace Server.Accounting
 
 				m.SendAsciiMessage( "You will enjoy the benefits and relatively safe status of a young player for {0} more hour{1}.", hours, hours != 1 ? "s" : "" );
 			}
+			Console.WriteLine("Account - end EventSink_Login");
 		}
 
 		public void RemoveYoungStatus( int message )

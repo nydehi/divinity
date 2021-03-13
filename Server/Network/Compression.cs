@@ -215,16 +215,18 @@ namespace Server.Network {
 	}
 
 	public sealed class Compressor32 : ICompressor {
-		[DllImport( "zlib32" )]
+		static string c_ZlibPath = @"C:\Dev\UO\Divinity\divinity\zlib32.dll";
+
+		[DllImport("zlib32.dll")]
 		private static extern string zlibVersion();
 
-		[DllImport( "zlib32" )]
+		[DllImport ("zlib32.dll")]
 		private static extern ZLibError compress( byte[] dest, ref int destLength, byte[] source, int sourceLength );
 
-		[DllImport( "zlib32" )]
+		[DllImport("zlib32.dll")]
 		private static extern ZLibError compress2( byte[] dest, ref int destLength, byte[] source, int sourceLength, ZLibQuality quality );
 
-		[DllImport( "zlib32" )]
+		[DllImport( "zlib32.dll" )]
 		private static extern ZLibError uncompress( byte[] dest, ref int destLen, byte[] source, int sourceLen );
 
 		public Compressor32() {
@@ -250,16 +252,16 @@ namespace Server.Network {
 	}
 
 	public sealed class Compressor64 : ICompressor {
-		[DllImport( "zlib64" )]
+		[DllImport( "zlibwapi64.dll" )]
 		private static extern string zlibVersion();
 
-		[DllImport( "zlib64" )]
+		[DllImport( "zlibwapi64.dll" )]
 		private static extern ZLibError compress( byte[] dest, ref int destLength, byte[] source, int sourceLength );
 
-		[DllImport( "zlib64" )]
+		[DllImport( "zlibwapi64.dll" )]
 		private static extern ZLibError compress2( byte[] dest, ref int destLength, byte[] source, int sourceLength, ZLibQuality quality );
 
-		[DllImport( "zlib64" )]
+		[DllImport( "zlibwapi64.dll" )]
 		private static extern ZLibError uncompress( byte[] dest, ref int destLen, byte[] source, int sourceLen );
 
 		public Compressor64() {

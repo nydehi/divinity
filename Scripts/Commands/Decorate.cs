@@ -24,20 +24,21 @@ namespace Server.Commands
 			m_Count = 0;
 
 			m_Mobile.SendMessage( "Generating world decoration, please wait." );
-
-			Generate( "Data/Decoration/Britannia", Map.Trammel, Map.Felucca );
-			Generate( "Data/Decoration/Trammel", Map.Trammel );
-			Generate( "Data/Decoration/Felucca", Map.Felucca );
-			Generate( "Data/Decoration/Ilshenar", Map.Ilshenar );
-			Generate( "Data/Decoration/Malas", Map.Malas );
-			Generate( "Data/Decoration/Tokuno", Map.Tokuno );
+			string Example = Core.GetFolder(Core.c_ConfigFilePath, "/Decoration/Britannia");
+			m_Mobile.SendMessage(Example);
+			Generate(Core.GetFolder(Core.c_ConfigFilePath, "/Decoration/Britannia"), Map.Trammel, Map.Felucca );
+			Generate(Core.GetFolder(Core.c_ConfigFilePath, "/Decoration/Trammel"), Map.Trammel );
+			Generate(Core.GetFolder(Core.c_ConfigFilePath, "/Decoration/Felucca"), Map.Felucca );
+			Generate(Core.GetFolder(Core.c_ConfigFilePath, "/Decoration/Ilshenar"), Map.Ilshenar );
+			Generate(Core.GetFolder(Core.c_ConfigFilePath, "/Decoration/Malas"), Map.Malas );
+			Generate(Core.GetFolder(Core.c_ConfigFilePath, "/Decoration/Tokuno"), Map.Tokuno );
 
 			m_Mobile.SendMessage( "World generating complete. {0} items were generated.", m_Count );
 		}
 
 		public static void Generate( string folder, params Map[] maps )
 		{
-			if ( !Directory.Exists( folder ) )
+			if ( !Directory.Exists(folder) )
 				return;
 
 			string[] files = Directory.GetFiles( folder, "*.cfg" );

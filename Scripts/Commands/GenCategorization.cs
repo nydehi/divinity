@@ -157,8 +157,8 @@ namespace Server.Commands
 			for ( int i = 0; i < ScriptCompiler.Assemblies.Length; ++i )
 				AddTypes( ScriptCompiler.Assemblies[i], types );
 
-			m_RootItems = Load( types, "Data/items.cfg" );
-			m_RootMobiles = Load( types, "Data/mobiles.cfg" );
+			m_RootItems = Load( types, (Core.GetPathOfFileName(Core.c_ConfigFilePath, "items.cfg")) );
+			m_RootMobiles = Load( types, (Core.GetPathOfFileName(Core.c_ConfigFilePath, "mobiles.cfg")));
 		}
 
 		private static CategoryEntry Load( ArrayList types, string config )

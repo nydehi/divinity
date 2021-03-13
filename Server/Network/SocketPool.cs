@@ -51,31 +51,31 @@ namespace Server.Network
 
 		public static void Create()
 		{
-			/*if ( m_Created )
-				return;
+            if (m_Created)
+                return;
 
-			m_FreeSockets = new Queue<Socket>( m_InitialCapacity );
-			
-			for ( int i = 0; i < m_InitialCapacity; ++i )
-				m_FreeSockets.Enqueue( new Socket( AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp ) );
-		
-			m_Created = true;*/
-		}
+            m_FreeSockets = new Queue<Socket>(m_InitialCapacity);
+
+            for (int i = 0; i < m_InitialCapacity; ++i)
+                m_FreeSockets.Enqueue(new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp));
+
+            m_Created = true;
+        }
 
 		public static void Destroy()
 		{
-			/*
-			if ( !m_Created )
-				return;
 
-			while ( m_FreeSockets.Count > 0 )
-				m_FreeSockets.Dequeue().Close();
+            if (!m_Created)
+                return;
 
-			m_FreeSockets = null;
-			*/
-		}
+            while (m_FreeSockets.Count > 0)
+                m_FreeSockets.Dequeue().Close();
 
-		public static Socket AcquireSocket()
+            m_FreeSockets = null;
+
+        }
+
+        public static Socket AcquireSocket()
 		{
 			/*lock ( m_FreeSockets )
 			{
@@ -95,13 +95,13 @@ namespace Server.Network
 
 		public static void ReleaseSocket( Socket s )
 		{
-			/*if ( s == null )
-				return;
+            if (s == null)
+                return;
 
-			s.Close();
+            s.Close();
 
-			lock ( m_FreeSockets )
-				m_FreeSockets.Enqueue( s );*/
-		}
+            lock (m_FreeSockets)
+                m_FreeSockets.Enqueue(s);
+        }
 	}
 }

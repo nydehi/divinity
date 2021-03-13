@@ -133,6 +133,7 @@ namespace Server.Accounting
 
 		public static void Event_Login( LoginEventArgs e )
 		{
+			Console.WriteLine("AccountManage -Event_Login");
 			Mobile m = e.Mobile;
 			Account a = m.Account as Account;
 
@@ -149,7 +150,7 @@ namespace Server.Accounting
 				m.CloseGump( typeof( LinkAddressGump ) );
 				m.SendGump( new LinkAddressGump( m, a ) );
 			}
-			
+			Console.WriteLine("AccountManage - end Event_Login");
 			//m.SendMessage( "This account is owned by '{0}'.", a.EMail );
 		}
 

@@ -30,7 +30,7 @@ namespace Server.Spells
 
 		public static void LoadTables()
 		{
-			StreamReader sr = new StreamReader(new FileStream("Data/spelltables.cfg", FileMode.Open, FileAccess.Read, FileShare.Read));
+			StreamReader sr = new StreamReader(new FileStream(Core.GetPathOfFileName(Core.c_ConfigFilePath, "spelltables.cfg"), FileMode.Open, FileAccess.Read, FileShare.Read));
 
 			double[] speedTable = new double[2];
 
@@ -63,7 +63,7 @@ namespace Server.Spells
 
 		public static void SaveTables()
 		{
-			StreamWriter sw = new StreamWriter(new FileStream("Data/spelltables.cfg", FileMode.Create, FileAccess.Write, FileShare.Write));
+			StreamWriter sw = new StreamWriter(new FileStream(Core.GetPathOfFileName(Core.c_ConfigFilePath,"spelltables.cfg"), FileMode.Create, FileAccess.Write, FileShare.Write));
 
 			sw.WriteLine( String.Format( "{0} {1}", SpeedTable[0], SpeedTable[1] ) );
 

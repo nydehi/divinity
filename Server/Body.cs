@@ -41,9 +41,9 @@ namespace Server
 
 		static Body()
 		{
-			if ( File.Exists( "Data/bodyTable.cfg" ) )
+			if ( File.Exists( Core.GetPathOfFileName(Core.c_ConfigFilePath,"bodyTable.cfg" )) )
 			{
-				using ( StreamReader ip = new StreamReader( "Data/bodyTable.cfg" ) )
+				using ( StreamReader ip = new StreamReader(Core.GetPathOfFileName(Core.c_ConfigFilePath, "bodyTable.cfg")) )
 				{
 					m_Types = new BodyType[1000];
 

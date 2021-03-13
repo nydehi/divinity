@@ -21,12 +21,14 @@ namespace Server.Commands
 
 		public static void OnLogin( LoginEventArgs e )
 		{
+			Console.WriteLine("vis - OnLogin");
 			if ( e.Mobile is PlayerMobile )
 			{
 				PlayerMobile pm = (PlayerMobile)e.Mobile;
 
 				pm.VisibilityList.Clear();
 			}
+			Console.WriteLine("vis - end OnLogin");
 		}
 
 		[Usage( "Vis" )]

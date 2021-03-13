@@ -29,6 +29,7 @@ using System.Reflection;
 using System.Security.Cryptography;
 using Microsoft.CSharp;
 using Microsoft.VisualBasic;
+using System.Diagnostics;
 
 namespace Server
 {
@@ -54,7 +55,7 @@ namespace Server
 		{
 			List<string> list = new List<string>();
 
-			string path = Path.Combine( Core.BaseDirectory, "Data/Assemblies.cfg" );
+			string path = Core.GetPathOfFileName(Core.c_ConfigFilePath, "Assemblies.cfg");
 
 			if( File.Exists( path ) )
 			{
@@ -549,57 +550,29 @@ namespace Server
 
 		public static bool Compile( bool debug, bool cache )
 		{
-			EnsureDirectory( "Scripts/" );
-			EnsureDirectory( "Scripts/Output/" );
-
-			if( m_AdditionalReferences.Count > 0 )
-				m_AdditionalReferences.Clear();
-
 			List<Assembly> assemblies = new List<Assembly>();
 
-			Assembly assembly;
+			assemblies.Add(Assembly.LoadFrom("Scripts.dll"));
+			assemblies.Add(typeof(ScriptCompiler).Assembly);
 
-			if( CompileCSScripts( debug, cache, out assembly ) )
-			{
-				if( assembly != null )
-				{
-					assemblies.Add( assembly );
-				}
-			}
-			else
-			{
-				return false;
-			}
+			Assemblies = assemblies.ToArray();
 
-			if ( Core.VBdotNet )
-			{
-				if ( CompileVBScripts( debug, cache, out assembly ) )
-				{
-					if ( assembly != null )
-					{
-						assemblies.Add( assembly );
-					}
-				}
-				else
-				{
-					return false;
-				}
-			}
-			else
-			{
-				Console.WriteLine( "Scripts: Skipping VB.NET Scripts...done (use -vb to enable)");
-			}
+			Utility.PushColor(ConsoleColor.Yellow);
+			Console.WriteLine("Scripts: Verifying...");
+			Utility.PopColor();
 
-			if( assemblies.Count == 0 )
-			{
-				return false;
-			}
+			//Stopwatch watch = Stopwatch.StartNew();
 
-			m_Assemblies = assemblies.ToArray();
-
-			Console.Write( "Scripts: Verifying..." );
 			Core.VerifySerialization();
-			Console.WriteLine( "done ({0} items, {1} mobiles)", Core.ScriptItems, Core.ScriptMobiles );
+
+			//watch.Stop();
+
+			//Utility.PushColor(ConsoleColor.Green);
+			//Console.WriteLine(
+			//	"Finished ( ({3:F2} seconds)",
+					
+			//	watch.Elapsed.TotalSeconds);
+			//Utility.PopColor();
 
 			return true;
 		}
@@ -614,17 +587,33 @@ namespace Server
 
 				for( int i = 0; i < types.Length; ++i )
 				{
+					if(types[i].Name.Contains("doll"))
+                    {
+						Console.WriteLine(string.Format("{0} processed by Invoke", types[i].Name));
+                    }
 					MethodInfo m = types[i].GetMethod( method, BindingFlags.Static | BindingFlags.Public );
-
-					if( m != null )
+					if (types[i].Name.Contains("doll"))
+					{
+						Console.WriteLine(string.Format("{0} is the method name", m?.Name??"NoName"));  
+					}
+						if ( m != null )
 						invoke.Add( m );
 				}
 			}
 
 			invoke.Sort( new CallPriorityComparer() );
-
-			for( int i = 0; i < invoke.Count; ++i )
-				invoke[i].Invoke( null, null );
+			try
+			{
+				for (int i = 0; i < invoke.Count; ++i)
+				{
+					Console.WriteLine("{0} is about to be invoked.", invoke[i].Name);
+					invoke[i].Invoke(null, null);
+				}
+			}
+			catch(Exception e)
+            {
+				Console.WriteLine("Exception in invoke");
+            }
 		}
 
 		private static Dictionary<Assembly, TypeCache> m_TypeCaches = new Dictionary<Assembly, TypeCache>();

@@ -11,11 +11,13 @@ namespace Server.Misc
 	{
 		public static void Initialize()
 		{
+			Console.WriteLine("PaperDoll  Initialize");
 			EventSink.PaperdollRequest += new PaperdollRequestEventHandler( EventSink_PaperdollRequest );
 		}
 
 		public static void EventSink_PaperdollRequest( PaperdollRequestEventArgs e )
 		{
+			Console.WriteLine("PaperDoll  EventSink_PaperdollRequest");
 			Mobile beholder = e.Beholder;
 			Mobile beheld = e.Beheld;
 
@@ -30,6 +32,7 @@ namespace Server.Misc
 
 				// NOTE: OSI sends MobileUpdate when opening your own paperdoll.
 				// It has a very bad rubber-banding affect. What positive affects does it have?
+				Console.WriteLine("PaperDoll  end EventSink_PaperdollRequest");
 			}
 		}
 	}

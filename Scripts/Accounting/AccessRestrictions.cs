@@ -16,6 +16,7 @@ namespace Server
 			
 		private static void EventSink_SocketConnect( SocketConnectEventArgs e )
 		{
+			Console.WriteLine("AccessRestrictions - EventSink_SocketConnec");
 			try
 			{
 				IPAddress ip = ((IPEndPoint)e.Socket.RemoteEndPoint).Address;
@@ -40,7 +41,9 @@ namespace Server
 			catch
 			{
 				e.AllowConnection = false;
+				Console.WriteLine("AccessRestrictions - exception EventSink_SocketConnect");
 			}
+			Console.WriteLine("AccessRestrictions - end EventSink_SocketConnec");
 		}
 	}
 }

@@ -31,7 +31,7 @@ using Server.Guilds;
 using Server.Commands;
 
 namespace Server
-{
+{ 
 	public delegate void CharacterCreatedEventHandler( CharacterCreatedEventArgs e );
 	public delegate void OpenDoorMacroEventHandler( OpenDoorMacroEventArgs e );
 	public delegate void SpeechEventHandler( SpeechEventArgs e );
@@ -886,6 +886,7 @@ namespace Server
 
 		public static void InvokeGameLogin( GameLoginEventArgs e )
 		{
+			Console.WriteLine(String.Format("EventSink -{0}InvokeGameLogin", e.GetType().ToString()));
 			if ( GameLogin != null )
 				GameLogin( e );
 		}
@@ -922,8 +923,18 @@ namespace Server
 
 		public static void InvokeAccountLogin( AccountLoginEventArgs e )
 		{
+			Console.WriteLine(String.Format("1EventSink -{0} {1} {2} InvokeAccountLogin\n", e.GetType().ToString(),e.RejectReason,e.State));
+			if (AccountLogin == null)
+            {
+				Console.WriteLine("3EventSink  AccountLogin is null  InvokeAccountLogin\n");
+			}
 			if ( AccountLogin != null )
+            {
+				Console.WriteLine(String.Format("2EventSink -{0} {1}  InvokeAccountLogin",AccountLogin.Target, AccountLogin.GetType().ToString(), AccountLogin.GetInvocationList().ToString()));
 				AccountLogin( e );
+
+            }
+				
 		}
 
 		public static void InvokeChatRequest( ChatRequestEventArgs e )
@@ -976,6 +987,7 @@ namespace Server
 
 		public static void InvokeConnected( ConnectedEventArgs e )
 		{
+			Console.WriteLine(String.Format("EventSink -{0}InvokeConnected", e.GetType().ToString()));
 			if ( Connected != null )
 				Connected( e );
 		}

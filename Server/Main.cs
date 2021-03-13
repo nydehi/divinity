@@ -39,7 +39,23 @@ namespace Server
 
 	public class Core
 	{
-        private static Ultima.StringList m_CliLoc = null;
+		#region Core Constants
+		//possibly factor out to a file
+		public static string c_ClientFilesPath = @"C:\Program Files (x86)\Ultima OnlineT2A";
+		public static string c_ScriptsdllPath ="";
+		public static string c_ConfigFilePath = @"C:\Dev\UO\Divinity\divinity\Data";
+		public static string c_ZlibPath = @"C:\Dev\UO\Divinity\divinity\zlib32.dll";
+
+		public static string GetPathOfFileName(string ConstantPath,string filename)
+        {
+			return System.IO.Path.Combine(ConstantPath, filename);
+		}
+		public static string GetFolder(string ConstantPath,string Folder)
+        {
+			return System.IO.Path.Combine(ConstantPath, Folder);
+		}
+		#endregion
+		private static Ultima.StringList m_CliLoc = null;
 
         public static Ultima.StringList CliLoc
         {
@@ -203,10 +219,10 @@ namespace Server
 				{
 					try
 					{
-						m_BaseDirectory = ExePath;
+						m_BaseDirectory = @"C:\Dev\UO\Divinity\divinity\Scripts\bin\Debug";//      ExePath;
 
-						if( m_BaseDirectory.Length > 0 )
-							m_BaseDirectory = Path.GetDirectoryName( m_BaseDirectory );
+						//if( m_BaseDirectory.Length > 0 )
+						//	m_BaseDirectory = Path.GetDirectoryName( m_BaseDirectory );
 					}
 					catch
 					{
@@ -446,20 +462,35 @@ namespace Server
 				m_ConsoleEventHandler = new ConsoleEventHandler( OnConsoleEvent );
 				SetConsoleCtrlHandler( m_ConsoleEventHandler, true );
 			}
+			Assembly[] assems = AppDomain.CurrentDomain.GetAssemblies();
 
-			while( !ScriptCompiler.Compile( m_Debug, m_Cache ) )
-			{
-				Console.WriteLine( "Scripts: One or more scripts failed to compile or no script files were found." );
-				
-				if( m_Service )
-					return;
+			//List the assemblies in the current application domain.
+			Console.WriteLine("List of assemblies loaded in current appdomain:");
+			foreach (Assembly assem in assems)
+				Console.WriteLine(assem.ToString());
 
-				Console.WriteLine( " - Press return to exit, or R to try again." );
-				
-				if( Console.ReadKey( true ).Key != ConsoleKey.R )
-					return;
-			}
+			Listener.EndPoints = new IPEndPoint[] {
+			new IPEndPoint( IPAddress.Any, 2593 ), // Default: Listen on port 2593 on all IP addresses
 
+			// Examples:
+			// new IPEndPoint( IPAddress.Any, 80 ), // Listen on port 80 on all IP addresses
+			// new IPEndPoint( IPAddress.Parse( "1.2.3.4" ), 2593 ), // Listen on port 2593 on IP address 1.2.3.4
+		};
+			while (!ScriptCompiler.Compile(m_Debug, m_Cache))
+            {
+                Console.WriteLine("Scripts: One or more scripts failed to compile or no script files were found.");
+
+                if (m_Service)
+                    return;
+
+                Console.WriteLine(" - Press return to exit, or R to try again.");
+
+                if (Console.ReadKey(true).Key != ConsoleKey.R)
+                    return;
+                if (Console.ReadKey(true).Key == ConsoleKey.R)
+                    break;
+            }
+		
 			ScriptCompiler.Invoke( "Configure" );
 			
 			Region.Load();
@@ -470,6 +501,11 @@ namespace Server
 			SocketPool.Create();
 
 			MessagePump ms = m_MessagePump = new MessagePump();
+
+			//List the assemblies in the current application domain.
+			Console.WriteLine("List of assemblies loaded in current appdomain:");
+			foreach (Assembly assem in assems)
+				Console.WriteLine(assem.ToString());
 
 			timerThread.Start();
 

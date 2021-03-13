@@ -246,6 +246,7 @@ namespace Server.Misc
 
 		private static Account CreateAccount( NetState state, string un, string pw )
 		{
+			Console.WriteLine("AccountHandle - Account CreateAccount");
 			if ( un.Length == 0 || pw.Length == 0 )
 				return null;
 
@@ -269,12 +270,13 @@ namespace Server.Misc
 			Console.WriteLine( "Login: {0}: Creating new account '{1}'", state, un );
 
 			Account a = new Account( un, pw );
-
+			Console.WriteLine("AccountHandle - end Account CreateAccount");
 			return a;
 		}
 
 		public static void EventSink_AccountLogin( AccountLoginEventArgs e )
 		{
+			Console.WriteLine("AccountHandle - EventSink_AccountLogin");
 			if ( !IPLimiter.SocketBlock && !IPLimiter.Verify( e.State.Address ) )
 			{
 				e.Accepted = false;
@@ -290,12 +292,13 @@ namespace Server.Misc
 
 			string un = e.Username;
 			string pw = e.Password;
-
+			Console.WriteLine(string.Format("AccountHandler -${0} ${1} EventSink_AccountLogin",un,pw));
 			e.Accepted = false;
 			Account acct = Accounts.GetAccount( un ) as Account;
 
 			if ( acct == null )
 			{
+				Console.WriteLine("AccountHandler - acct is null EventSink_AccountLogin");
 				if ( AutoAccountCreation && un.Trim().Length > 0 )	//To prevent someone from making an account of just '' or a bunch of meaningless spaces 
 				{
 					e.State.Account = acct = CreateAccount( e.State, un, pw );
@@ -306,8 +309,10 @@ namespace Server.Misc
 				}
 				else
 				{
+					Utility.PushColor(ConsoleColor.Red);
 					Console.WriteLine( "Login: {0}: Invalid username '{1}'", e.State, un );
 					e.RejectReason = ALRReason.Invalid;
+					Utility.PopColor();
 				}
 			}
 			else if ( !acct.HasAccess( e.State ) )
@@ -336,10 +341,12 @@ namespace Server.Misc
 
 			if ( !e.Accepted )
 				AccountAttackLimiter.RegisterInvalidAccess( e.State );
+			Console.WriteLine("AccountHandle - EventSink_AccountLogin");
 		}
 
 		public static void EventSink_GameLogin( GameLoginEventArgs e )
 		{
+			Console.WriteLine("AccountHandle -EventSink_GameLogin");
 			if ( !IPLimiter.SocketBlock && !IPLimiter.Verify( e.State.Address ) )
 			{
 				e.Accepted = false;
@@ -388,6 +395,7 @@ namespace Server.Misc
 
 			if ( !e.Accepted )
 				AccountAttackLimiter.RegisterInvalidAccess( e.State );
+			Console.WriteLine("AccountHandle -end EventSink_GameLogin");
 		}
 	}
 }

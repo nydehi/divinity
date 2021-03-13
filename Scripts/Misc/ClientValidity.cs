@@ -252,6 +252,7 @@ namespace Server.Misc
 
 		private static void EventSink_Login( LoginEventArgs e )
 		{
+			Console.WriteLine("ClientValidity - EventSink_Login");
 			ClientValidity cl;
 			NetState ns;
 
@@ -269,6 +270,7 @@ namespace Server.Misc
 				cl = (ClientValidity)m_Table[ns];
 
 			cl.Begin();
+			Console.WriteLine("ClientValidity - end EventSink_Login");
 		}
 
 		private static void EventSink_Logout( LogoutEventArgs e )
